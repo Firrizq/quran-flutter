@@ -10,7 +10,7 @@ class SurahTab extends StatelessWidget {
 
   //GET data list surah from JSON with asynchronous
   Future<List<Surah>> _getListSurah() async {
-    String data = await rootBundle.loadString('/data/list-surah.json');
+    String data = await rootBundle.loadString('assets/data/list-surah.json');
     return surahFromJson(data);
   }
 
@@ -19,6 +19,9 @@ class SurahTab extends StatelessWidget {
     return FutureBuilder(
         future: _getListSurah(),
         builder: (((context, snapshot) {
+          if (!snapshot.hasData) {
+            return Container();
+          }
           return ListView.separated(
               itemBuilder: ((context, index) => _surahItem(
                   context: context, surah: snapshot.data!.elementAt(index))),
