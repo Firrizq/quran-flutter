@@ -37,7 +37,7 @@ class SurahTab extends StatelessWidget {
         behavior: HitTestBehavior.opaque,
         onTap: () {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: ((context) => const DetailScreen())));
+              MaterialPageRoute(builder: ((context) => DetailScreen(nomorSurah: surah.nomor,))));
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
